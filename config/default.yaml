@@ -6,8 +6,8 @@ app:
   port: "8080"
 postgres:
   host: bank-postgres:5432
-  database: bankdb
-  userName: "test"
-  password: "test"
+  database: test
+  userName: test
+  password: test
   sslMode: disable
   automigrate: true
