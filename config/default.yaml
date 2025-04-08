@@ -2,11 +2,11 @@ app:
   versions:
     postgres: 1683195350
   environment: dev
-  host: "0.0.0.0"
+  host: 0.0.0.0
   port: "8080"
 postgres:
-  host: localhost:5432
-  database: bdb
+  host: bank-postgres:5432
+  database: test
   userName: test
   password: test
   sslMode: disable

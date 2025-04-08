@@ -20,7 +20,7 @@ func TestMain(m *testing.M) {
 	var err error
 	config.LoadConfigs("../../../config/default.yaml")
 	cfg := config.GetConfigs()
-	dbstring := fmt.Sprintf("postgresql://%v:%v@%v/%v?sslmode=%v", cfg.Postgres.UserName, url.QueryEscape(cfg.Postgres.Password), cfg.Postgres.Host, cfg.Postgres.Database, cfg.Postgres.SSLmode)
+	
 	testDB, err = sql.Open("postgres", dbstring)
 	if err != nil {
 		log.Fatalf("Failed to connect to database: %v\n", err)
