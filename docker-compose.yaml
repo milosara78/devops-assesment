@@ -1,0 +1,35 @@
+version: "3.8"
+
+services:
+  bank-postgres:
+    image: postgres:12
+    container_name: bank-postgres-1
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  transact:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        GOARCH: amd64
+    container_name: bank-api
+    image: transact:local
+    depends_on:
+      - bank-postgres
+    environment:
+      BANK_DB_SOURCE: ${BANK_DB_SOURCE}
+      BANK_MIGRATE: ${BANK_MIGRATE}
+      BANK_SERVER_ADDRESS: ${BANK_SERVER_ADDRESS}
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+
+volumes:
+  pgdata:
