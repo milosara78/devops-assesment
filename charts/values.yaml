@@ -1,8 +1,7 @@
 replicaCount: 5
 
 image:
-  repository: ghcr.io/<<bank-app>>
-  tag: latest
+  repository: ghcr.io/milosara78/devops-assesment:master
   pullPolicy: IfNotPresent
 
 service:
